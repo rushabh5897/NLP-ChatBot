@@ -1,3 +1,5 @@
+version: "2.0"
+
 intents:
 - affirm
 - restaurant_search
@@ -9,12 +11,7 @@ entities:
 - location
 - price
 - people
-slots:
-  cuisine:
-    type: text
-  location:
-    type: text
-templates:
+responses:
   utter_ask_cuisine:
   - buttons:
     - payload: Chinese
@@ -47,3 +44,9 @@ actions:
 - utter_default
 - utter_goodbye
 - utter_greet
+slots:
+  cuisine:
+    type: text
+  location:
+    type: text
+
