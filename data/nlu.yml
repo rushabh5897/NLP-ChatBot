@@ -14,6 +14,8 @@ nlu:
     - great choice
     - sounds really good
     - thanks
+    - sure
+    - sounds great
 - intent: goodbye
   examples: |
     - bye
@@ -24,6 +26,7 @@ nlu:
     - farewell
     - Bye bye
     - have a good one
+    - cya
 - intent: greet
   examples: |
     - hey
@@ -34,6 +37,7 @@ nlu:
     - good morning
     - good evening
     - dear sir
+    - good afternoon
 - intent: restaurant_search
   examples: |
     - i'm looking for a place to eat
@@ -55,6 +59,11 @@ nlu:
     - [Italian](cuisine)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
     - [chinese](cuisine)
+    - [mexican]{"entity": "cuisine", "value": "Mexican"}
+    - [italian]{"entity": "cuisine", "value": "Italian"}
+    - [american]{"entity": "cuisine", "value": "American"}
+    - [nouth Indian]{"entity": "cuisine", "value": "South Indian"}
+    - [north Indian]{"entity": "cuisine", "value": "North Indian"}
     - [Lithuania](location)
     - Oh, sorry, in [Italy](location)
     - in [delhi](location)
@@ -71,14 +80,155 @@ nlu:
     - [delhi](location)
     - please find me a restaurant in [ahmedabad](location)
     - please show me a few [italian](cuisine) restaurants in [bangalore](location)
+    - [Ahmedabad](location)
+    - [Bengaluru](location)
+    - [Chennai](location)
+    - [Delhi](location)
+    - [Hyderabad](location)
+    - [Kolkata](location)
+    - [Mumbai](location)
+    - [Pune](location)
+    - [Agra](location)
+    - [Ajmer](location)
+    - [Aligarh](location)
+    - [Amravati](location)
+    - [Amritsar](location)
+    - [Asansol](location)
+    - [Aurangabad](location)
+    - [Bareilly](location)
+    - [Belgaum](location)
+    - [Bhavnagar](location)
+    - [Bhiwandi](location)
+    - [Bhopal](location)
+    - [Bhubaneswar](location)
+    - [Bikaner](location)
+    - [Bilaspur](location)
+    - [Bokaro-[Steel-[City](location)
+    - [Chandigarh](location)
+    - [Coimbatore](location)
+    - [Cuttack](location)
+    - [Dehradun](location)
+    - [Dhanbad](location)
+    - [Bhilai](location)
+    - [Durgapur](location)
+    - [Dindigul](location)
+    - [Erode](location)
+    - [Faridabad](location)
+    - [Firozabad](location)
+    - [Ghaziabad](location)
+    - [Gorakhpur](location)
+    - [Gulbarga](location)
+    - [Guntur](location)
+    - [Gwalior](location)
+    - [Gurgaon](location)
+    - [Guwahati](location)
+    - [Hamirpur](location)
+    - [Hubli–Dharwad](location)
+    - [Indore](location)
+    - [Jabalpur](location)
+    - [Jaipur](location)
+    - [Jalandhar](location)
+    - [Jammu](location)
+    - [Jamnagar](location)
+    - [Jamshedpur](location)
+    - [Jhansi](location)
+    - [Jodhpur](location)
+    - [Kakinada](location)
+    - [Kannur](location)
+    - [Kanpur](location)
+    - [Karnal](location)
+    - [Kochi](location)
+    - [Kolhapur](location)
+    - [Kollam](location)
+    - [Kozhikode](location)
+    - [Kurnool](location)
+    - [Ludhiana](location)
+    - [Lucknow](location)
+    - [Madurai](location)
+    - [Malappuram](location)
+    - [Mathura](location)
+    - [Mangalore](location)
+    - [Meerut](location)
+    - [Moradabad](location)
+    - [Mysore](location)
+    - [Nagpur](location)
+    - [Nanded](location)
+    - [Nashik](location)
+    - [Nellore](location)
+    - [Noida](location)
+    - [Patna](location)
+    - [Pondicherry](location)
+    - [Purulia](location)
+    - [Prayagraj](location)
+    - [Raipur](location)
+    - [Rajkot](location)
+    - [Rajahmundry](location)
+    - [Ranchi](location)
+    - [Rourkela](location)
+    - [Salem](location)
+    - [Sangli](location)
+    - [Shimla](location)
+    - [Siliguri](location)
+    - [Solapur](location)
+    - [Srinagar](location)
+    - [Surat](location)
+    - [Thanjavur](location)
+    - [Thiruvananthapuram](location)
+    - [Thrissur](location)
+    - [Tiruchirappalli](location)
+    - [Tirunelveli](location)
+    - [Ujjain](location)
+    - [Bijapur](location)
+    - [Vadodara](location)
+    - [Varanasi](location)
+    - [Vasai-Virar-[City](location)
+    - [Vijayawada](location)
+    - [Visakhapatnam](location)
+    - [Vellore](location)
+    - [Warangal](location)
+    - can you book table for me
+    - [Pune](location)
+    - [Chinese]{"entity": "cuisine", "value": "chinese"}
+- intent: stop
+  examples: |
+    - \b
 - synonym: chinese
   examples: |
     - chines
     - Chinese
     - Chines
+    - chinis
 - synonym: Delhi
   examples: |
     - New Delhi
+    - delhi
+    - dilli
+    - capital of India
+- synonym: Mexican
+  examples: |
+    - mexican
+    - mexicam
+    - maxican
+- synonym: Italian
+  examples: |
+    - italian
+    - italien
+- synonym: American
+  examples: |
+    - american
+    - amerikan
+- synonym: South Indian
+  examples: |
+    - nouth Indian
+    - southindian
+    - south india
+    - southendian
+- synonym: North Indian
+  examples: |
+    - north Indian
+    - northindian
+    - north india
+    - northendian
 - synonym: mid
   examples: |
     - moderate
@@ -92,6 +242,11 @@ nlu:
   examples: |
     - veggie
     - vegg
+    - pure veg
+- synonym: mid
+  examples: |
+    - moderate
+
 - regex: greet
   examples: |
     - hey[^\s]*

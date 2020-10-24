@@ -191,3 +191,21 @@ stories:
     - location: delhi
   - intent: affirm
   - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: restaurant_search
+  - action: utter_ask_location
+  - intent: stop
+  - intent: restaurant_search
+    entities:
+    - location: Pune
+  - slot_was_set:
+    - location: Pune
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: action_search_restaurants

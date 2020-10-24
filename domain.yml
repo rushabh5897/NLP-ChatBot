@@ -1,16 +1,24 @@
-version: "2.0"
-
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-- affirm
+- stop
 - restaurant_search
+- affirm
 - greet
 - goodbye
-- stop
 entities:
 - cuisine
 - location
-- price
 - people
+- price
+slots:
+  cuisine:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -44,9 +52,4 @@ actions:
 - utter_default
 - utter_goodbye
 - utter_greet
-slots:
-  cuisine:
-    type: text
-  location:
-    type: text
-
+version: '2.0'
