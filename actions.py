@@ -7,6 +7,10 @@ from rasa_sdk.events import SlotSet
 import zomatopy
 import json
 
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 
 class ActionSearchRestaurants(Action):
     def name(self):
@@ -42,7 +46,7 @@ class ActionSearchRestaurants(Action):
             else:
                 for restaurant in d['restaurants']:
                     response = response + "Found " + restaurant['restaurant']['name'] + " in " + \
-                               restaurant['restaurant']['location']['address'] + "\n"
+                               restaurant['restaurant']['location']['address'] + " has been rated "+  restaurant['restaurant']['user_rating']['aggregate_rating'] + "\n"
 
         dispatcher.utter_message("------------------------**------------------------\n" + response+"\n------------------------**------------------------\n")
         return [SlotSet('location', loc)]
@@ -64,7 +68,7 @@ class ActionSendMail(Action):
         lon = d1["location_suggestions"][0]["longitude"]
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'Mexican': 73, 'south indian': 85}
-        results = zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 5)
+        results = zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 10)
         d = json.loads(results)
         response = ""
         if d['results_found'] == 0:
