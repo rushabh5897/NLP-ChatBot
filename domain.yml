@@ -12,6 +12,7 @@ entities:
 - location
 - people
 - price
+- user_email_id
 slots:
   cuisine:
     type: text
@@ -60,12 +61,19 @@ responses:
   - text: hey there! How may i help you
   - text: Hi, How can I help you!
   - text: Hey, How is it going. How May I help you Today
+  utter_ask_mail_required:
+    - text: Do you want to me to send information via mail?
+  utter_ask_mail:
+    - text: Can you type your email ID?
+
 actions:
 - action_search_restaurants
 - action_send_mail
 - utter_ask_cuisine
 - utter_ask_howcanhelp
 - utter_ask_location
+- utter_ask_mail
+- utter_ask_mail_required
 - utter_default
 - utter_goodbye
 - utter_greet

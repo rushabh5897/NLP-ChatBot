@@ -197,9 +197,21 @@ nlu:
     - can you book table for me
     - [Pune](location)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
+    - My email id is [rushabhpsancheti@gmail.com](user_email_id)
+    - search resturant in [411045](location)
+    - [South Indian](cuisine)
+    - thai food[]{"entity": "cuisine", "value": "thai food"}
+    - give me [mexican]{"entity": "cuisine", "value": "Mexican"} hotel in [solapur](location)
+    - [mexican]{"entity": "cuisine", "value": "Mexican"} hotel in [dilli]{"entity": "location", "value": "Delhi"}
+    - can you book [cheap]{"entity": "price", "value": "low"} restaurant in [poona](location)
+    - give me list of [high class]{"entity": "price", "value": "high"} hotels in [solapur](location)
+
 - intent: stop
   examples: |
     - \b
+    - \c
+    - quit
+    - exit
 - synonym: chinese
   examples: |
     - chines
@@ -228,7 +240,7 @@ nlu:
     - amerikan
 - synonym: South Indian
   examples: |
-    - nouth Indian
+    - south Indian
     - southindian
     - south india
     - southendian
@@ -241,6 +253,12 @@ nlu:
 - synonym: mid
   examples: |
     - moderate
+- synonym: low
+  examples: |
+    - cheap
+- synonym: high
+  examples: |
+    - high class
 - synonym: '4'
   examples: |
     - four
@@ -259,10 +277,12 @@ nlu:
 - synonym: mid
   examples: |
     - moderate
-
 - regex: greet
   examples: |
     - hey[^\s]*
 - regex: pincode
   examples: |
     - [0-9]{6}
+- regex: user_email_id
+  examples: |
+    - ^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$
