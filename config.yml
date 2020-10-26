@@ -6,7 +6,7 @@ pipeline:
   - name: SpacyFeaturizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
-#  - name: CountVectorsFeaturizer
+    #  - name: CountVectorsFeaturizer
     analyzer: "en_core_web_md"
     min_ngram: 1
     max_ngram: 4
@@ -17,8 +17,8 @@ pipeline:
     epochs: 100
 
 policies:
-- name: MemoizationPolicy
-- name: TEDPolicy
-  max_history: 5
-  epochs: 200
-- name: RulePolicy
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 200
+  - name: RulePolicy
