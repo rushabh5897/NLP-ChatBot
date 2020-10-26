@@ -6,7 +6,6 @@ pipeline:
   - name: SpacyFeaturizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
-#  - name: CountVectorsFeaturizer
     analyzer: "en_core_web_md"
     min_ngram: 1
     max_ngram: 4
