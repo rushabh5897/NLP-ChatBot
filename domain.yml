@@ -2,24 +2,26 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- send_mail
-- restaurant_search
 - greet
+- restaurant_search
+- send_mail
 - affirm
 - goodbye
 - stop
+- negation
 entities:
 - cuisine
+- flag_response
 - location
 - people
 - price
 - user_email_id
-- flag_response
 slots:
-  flag_response:
-    type: bool
   cuisine:
     type: text
+    influence_conversation: true
+  flag_response:
+    type: bool
     influence_conversation: true
   location:
     type: text

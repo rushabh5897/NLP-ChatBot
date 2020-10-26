@@ -25,7 +25,7 @@ class ActionSearchRestaurants(Action):
         cuisine = tracker.get_slot('cuisine')
         location_detail = zomato.get_location(loc, 1)
         d1 = json.loads(location_detail)
-        if d1["location_suggestions"] is None :
+        if d1["location_suggestions"][0] is None :
             dispatcher.utter_message(
                 "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]

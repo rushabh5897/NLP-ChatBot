@@ -16,7 +16,6 @@ nlu:
     - thanks
     - sure
     - sounds great
-
 - intent: negation
   examples: |
     - no
@@ -29,7 +28,6 @@ nlu:
     - no, thank you
     - no, thanks
     - nako
-
 - intent: goodbye
   examples: |
     - bye
@@ -70,16 +68,16 @@ nlu:
     - I am looking a restaurant in [294328](location)
     - in [Gurgaon](location)
     - [South Indian](cuisine)
-    - [south-indian]{"entity": "cuisine", "value": "South Indian"}
+    - [south-indian]{"entity": "cuisine", "value": "south indian"}
     - [North Indian](cuisine)
     - [Italian](cuisine)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
     - [chinese](cuisine)
-    - [mexican]{"entity": "cuisine", "value": "Mexican"}
-    - [italian]{"entity": "cuisine", "value": "Italian"}
-    - [american]{"entity": "cuisine", "value": "American"}
-    - [south Indian]{"entity": "cuisine", "value": "South Indian"}
-    - [north Indian]{"entity": "cuisine", "value": "North Indian"}
+    - [mexican](cuisine)
+    - [italian](cuisine)
+    - [american](cuisine)
+    - [south Indian]{"entity": "cuisine", "value": "south indian"}
+    - [north Indian]{"entity": "cuisine", "value": "north indian"}
     - find me [cheap]{"entity": "price", "value": "low"} chinese restaurants in kanpur
     - [Lithuania](location)
     - Oh, sorry, in [Italy](location)
@@ -103,117 +101,11 @@ nlu:
     - please show me a few [italian](cuisine) restaurants in [bangalore](location)
     - please show [mid](price) range restaurants in [dilli](location)
     - book a [high](price) end [italian](cuisine) restaurant in [Vijayawada](location)
-    - [Ahmedabad](location)
-    - [Bengaluru](location)
-    - [Chennai](location)
-    - [Delhi](location)
-    - [Hyderabad](location)
-    - [Kolkata](location)
-    - [Mumbai](location)
-    - [Pune](location)
-    - [Agra](location)
-    - [Ajmer](location)
-    - [Aligarh](location)
-    - [Amravati](location)
-    - [Amritsar](location)
-    - [Asansol](location)
-    - [Aurangabad](location)
-    - [Bareilly](location)
-    - [Belgaum](location)
-    - [Bhavnagar](location)
-    - [Bhiwandi](location)
-    - [Bhopal](location)
-    - [Bhubaneswar](location)
-    - [Bikaner](location)
-    - [Bilaspur](location)
-    - [Bokaro-[Steel-[City](location)
-    - [Chandigarh](location)
-    - [Coimbatore](location)
-    - [Cuttack](location)
-    - [Dehradun](location)
-    - [Dhanbad](location)
-    - [Bhilai](location)
-    - [Durgapur](location)
-    - [Dindigul](location)
-    - [Erode](location)
-    - [Faridabad](location)
-    - [Firozabad](location)
-    - [Ghaziabad](location)
-    - [Gorakhpur](location)
-    - [Gulbarga](location)
-    - [Guntur](location)
-    - [Gwalior](location)
-    - [Gurgaon](location)
-    - [Guwahati](location)
-    - [Hamirpur](location)
-    - [Hubli–Dharwad](location)
-    - [Indore](location)
-    - [Jabalpur](location)
-    - [Jaipur](location)
-    - [Jalandhar](location)
-    - [Jammu](location)
-    - [Jamnagar](location)
-    - [Jamshedpur](location)
-    - [Jhansi](location)
-    - [Jodhpur](location)
-    - [Kakinada](location)
-    - [Kannur](location)
-    - [Kanpur](location)
-    - [Karnal](location)
-    - [Kochi](location)
-    - [Kolhapur](location)
-    - [Kollam](location)
-    - [Kozhikode](location)
-    - [Kurnool](location)
-    - [Ludhiana](location)
-    - [Lucknow](location)
-    - [Madurai](location)
-    - [Malappuram](location)
-    - [Mathura](location)
-    - [Mangalore](location)
-    - [Meerut](location)
-    - [Moradabad](location)
-    - [Mysore](location)
-    - [Nagpur](location)
-    - [Nanded](location)
-    - [Nashik](location)
-    - [Nellore](location)
-    - [Noida](location)
-    - [Patna](location)
-    - [Pondicherry](location)
-    - [Purulia](location)
-    - [Prayagraj](location)
-    - [Raipur](location)
-    - [Rajkot](location)
-    - [Rajahmundry](location)
-    - [Ranchi](location)
-    - [Rourkela](location)
-    - [Salem](location)
-    - [Sangli](location)
-    - [Shimla](location)
-    - [Siliguri](location)
-    - [Solapur](location)
-    - [Srinagar](location)
-    - [Surat](location)
-    - [Thanjavur](location)
-    - [Thiruvananthapuram](location)
-    - [Thrissur](location)
-    - [Tiruchirappalli](location)
-    - [Tirunelveli](location)
-    - [Ujjain](location)
-    - [Bijapur](location)
-    - [Vadodara](location)
-    - [Varanasi](location)
-    - [Vasai-Virar-[City](location)
-    - [Vijayawada](location)
-    - [Visakhapatnam](location)
-    - [Vellore](location)
-    - [Warangal](location)
     - can you book table for me
     - search resturant in [411045](location)
     - thai food[]{"entity": "cuisine", "value": "thai food"}
-    - give me [mexican]{"entity": "cuisine", "value": "Mexican"} hotel in [solapur](location)
-    - [mexican]{"entity": "cuisine", "value": "Mexican"} hotel in [dilli]{"entity": "location", "value": "Delhi"}
+    - give me [mexican](cuisine) hotel in [solapur](location)
+    - [mexican](cuisine) hotel in [dilli]{"entity": "location", "value": "Delhi"}
     - can you book [cheap]{"entity": "price", "value": "low"} restaurant in [poona](location)
     - give me list of [high class]{"entity": "price", "value": "high"} hotels in [solapur](location)
     - find me [cheap]{"entity": "price", "value": "low"} [south indian](cuisine) restaurants in [pune](location)
@@ -224,8 +116,16 @@ nlu:
     - find me [cheap]{"entity": "price", "value": "low"} [chineese](cuisine) restaurants in [kanpur](location)
     - send me list of [high class]{"entity": "price", "value": "high"} [chinese](cuisine) hotels in [pune](location)
     - send me list of [mexican](cuisine) hotels in [pune](location)
-    - find [italian]{"entity": "cuisine", "value": "Italian"} restaurants in [kurdu](location)
+    - find [italian]{"entity": "cuisine", "value": "italian"} restaurants in [kurdu](location)
     - [low](price)
+    - find restaurants in [barshi](location)
+    - find restaurants in [kurdu](location)
+    - find restaurants in [blabla](location)
+    - find restaurants in [Bangalore](location)
+    - book table in [Bengaluru](location)
+    - find table in [Banglur](location)
+    - [Italian](cuisine)
+    - [mid](price)
 - intent: send_mail
   examples: |
     - My email id is [rushabhpsancheti@gmail.com](user_email_id)
@@ -257,27 +157,14 @@ nlu:
     - delhi
     - capital of India
     - nayi dilli
-- synonym: South Indian
+- synonym: south indian
   examples: |
     - south-indian
     - south Indian
     - southindian
     - south indian
     - southendian
-- synonym: Mexican
-  examples: |
-    - mexican
-    - mexicam
-    - maxican
-- synonym: Italian
-  examples: |
-    - italian
-    - italien
-- synonym: American
-  examples: |
-    - american
-    - amerikan
-- synonym: North Indian
+- synonym: north indian
   examples: |
     - north Indian
     - northindian
@@ -295,6 +182,19 @@ nlu:
 - synonym: high
   examples: |
     - high class
+- synonym: italian
+  examples: |
+    - italian
+    - italien
+- synonym: mexican
+  examples: |
+    - mexican
+    - mexicam
+    - maxican
+- synonym: american
+  examples: |
+    - american
+    - amerikan
 - synonym: '2'
   examples: |
     - couple
@@ -302,6 +202,10 @@ nlu:
 - synonym: bangalore
   examples: |
     - Bengaluru
+    - Banglur
+    - Banglore
+    - Bengalur
+    - Bangaluru
 - synonym: vegetarian
   examples: |
     - veggie
@@ -315,4 +219,4 @@ nlu:
     - [0-9]{6}
 - regex: user_email_id
   examples: |
-    - ^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$
+    - ^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.+$

@@ -142,30 +142,78 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: interactive_story_99
+
+- story: interactive_story_98
   steps:
   - intent: greet
   - action: utter_greet
   - intent: restaurant_search
     entities:
+    - location: barshi
+  - slot_was_set:
+    - location: barshi
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
     - cuisine: Italian
-    - location: kurdu
   - slot_was_set:
     - cuisine: Italian
-  - slot_was_set:
-    - location: kurdu
   - action: utter_ask_price_range
   - intent: restaurant_search
     entities:
-    - price: low
+    - price: mid
   - slot_was_set:
-    - price: low
+    - price: mid
   - action: action_search_restaurants
-  - action: utter_ask_mail_required
-  - intent: affirm
-  - intent: send_mail
-    entities:
-    - user_email_id: bujji.phanikiran@gmail.com
   - slot_was_set:
-    - user_email_id: bujji.phanikiran@gmail.com
-  - action: action_send_mail
+    - flag_response: false
+
+- story: interactive_story_98
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: kurdu
+  - slot_was_set:
+    - location: kurdu
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: utter_ask_price_range
+  - intent: restaurant_search
+    entities:
+    - price: mid
+  - slot_was_set:
+    - price: mid
+  - action: action_search_restaurants
+  - slot_was_set:
+    - flag_response: false
+
+- story: interactive_story_98
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: blabla
+  - slot_was_set:
+    - location: blabla
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: utter_ask_price_range
+  - intent: restaurant_search
+    entities:
+    - price: mid
+  - slot_was_set:
+    - price: mid
+  - action: action_search_restaurants
+  - slot_was_set:
+    - flag_response: false
