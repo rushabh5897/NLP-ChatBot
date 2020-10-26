@@ -54,10 +54,9 @@ nlu:
     - I am looking for [asian fusion](cuisine) food
     - I am looking a restaurant in [294328](location)
     - in [Gurgaon](location)
-    - [South Indian]{"entity": "cuisine", "value": "South Indian"}
+    - [South Indian](cuisine)
     - [south-indian]{"entity": "cuisine", "value": "South Indian"}
     - [North Indian](cuisine)
-    - [South Indian](cuisine)
     - [Italian](cuisine)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
     - [chinese](cuisine)
@@ -196,17 +195,17 @@ nlu:
     - [Vellore](location)
     - [Warangal](location)
     - can you book table for me
-    - [Pune](location)
-    - [Chinese]{"entity": "cuisine", "value": "chinese"}
     - My email id is [rushabhpsancheti@gmail.com](user_email_id)
     - search resturant in [411045](location)
-    - [South Indian](cuisine)
     - thai food[]{"entity": "cuisine", "value": "thai food"}
     - give me [mexican]{"entity": "cuisine", "value": "Mexican"} hotel in [solapur](location)
     - [mexican]{"entity": "cuisine", "value": "Mexican"} hotel in [dilli]{"entity": "location", "value": "Delhi"}
     - can you book [cheap]{"entity": "price", "value": "low"} restaurant in [poona](location)
     - give me list of [high class]{"entity": "price", "value": "high"} hotels in [solapur](location)
-
+    - find me [cheap]{"entity": "price", "value": "low"} [south indian](cuisine) restaurants in [pune](location)
+    - find me [south indian](cuisine) restaurants in [pune](location)
+    - [mid](price)
+    - find me a [cheap]{"entity": "price", "value": "low"} [chineese](cuisine) restaurant in [vijayawada](location)
 - intent: stop
   examples: |
     - \b
@@ -216,6 +215,9 @@ nlu:
     - good day
     - quit
     - exit
+- intent: action_send_mail
+  examples: |
+    - [test@gmail.com](user_email_id)
 - synonym: chinese
   examples: |
     - chines
@@ -225,10 +227,17 @@ nlu:
 - synonym: Delhi
   examples: |
     - New Delhi
-    - delhi
     - dilli
+    - delhi
     - capital of India
     - nayi dilli
+- synonym: South Indian
+  examples: |
+    - south-indian
+    - south Indian
+    - southindian
+    - south indian
+    - southendian
 - synonym: Mexican
   examples: |
     - mexican
@@ -242,30 +251,24 @@ nlu:
   examples: |
     - american
     - amerikan
-- synonym: South Indian
-  examples: |
-    - south Indian
-    - southindian
-    - south indian
-    - southendian
 - synonym: North Indian
   examples: |
     - north Indian
     - northindian
     - north india
     - northendian
-- synonym: mid
-  examples: |
-    - moderate
 - synonym: low
   examples: |
     - cheap
-- synonym: high
+- synonym: mid
   examples: |
-    - high class
+    - moderate
 - synonym: '4'
   examples: |
     - four
+- synonym: high
+  examples: |
+    - high class
 - synonym: '2'
   examples: |
     - couple
@@ -278,10 +281,6 @@ nlu:
     - veggie
     - vegg
     - pure veg
-- synonym: mid
-  examples: |
-    - moderate
-
 - regex: greet
   examples: |
     - hey[^\s]*
