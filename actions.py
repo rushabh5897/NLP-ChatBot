@@ -36,7 +36,7 @@ class ActionSearchRestaurants(Action):
 
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'south indian': 85, 'thai': 95, 'mexican': 73}
-        dispatcher.utter_message("--ct--" + ct)
+        #dispatcher.utter_message("--ct--" + ct)
 
         if not ct:
             dispatcher.utter_message(

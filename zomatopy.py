@@ -237,7 +237,7 @@ class Zomato:
         if str(limit).isalpha() == True:
             raise ValueError('LimitNotInteger')
         headers = {'Accept': 'application/json', 'user-key': self.user_key}
-        print(base_url + "locations?query=" + str(query) + "&count=" + str(limit), headers=headers)
+        #print(base_url + "locations?query=" + str(query) + "&count=" + str(limit), headers=headers)
         r = (requests.get(base_url + "locations?query=" + str(query) + "&count=" + str(limit), headers=headers).content).decode("utf-8")
         return r
 
