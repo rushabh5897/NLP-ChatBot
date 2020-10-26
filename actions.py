@@ -12,7 +12,7 @@ from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 
 import zomatopy
-
+import re
 
 class ActionSearchRestaurants(Action):
     def name(self):
@@ -40,7 +40,7 @@ class ActionSearchRestaurants(Action):
 
         if not ct:
             dispatcher.utter_message(
-                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again \n" + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]
         else:
             ct = ct.lower()
@@ -105,7 +105,7 @@ class ActionSendMail(Action):
         d1 = json.loads(location_detail)
         if d1["location_suggestions"] is None :
             dispatcher.utter_message(
-                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again \n" + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]
         lat = d1["location_suggestions"][0]["latitude"]
         lon = d1["location_suggestions"][0]["longitude"]
@@ -116,64 +116,63 @@ class ActionSendMail(Action):
         response = ""
         if not lat:
             dispatcher.utter_message(
-                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again \n" + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]
         if d['results_found'] == 0:
             response = "Extremely Sorry !!! I'm not able to find any related results to your query \n"
             dispatcher.utter_message(
-                "--------------------**--------------------\n" + response + "--------------------**--------------------\n")
+                "--------------------**--------------------\n" + response + "--------------------**-------------------- \n")
 
         else:
             for restaurant in d['restaurants']:
                 response = response + "<h2>" + restaurant['restaurant']['name'] + "</h2><ul><li><b>" + \
                 "Restaurant locality address : </b>" + restaurant['restaurant']['location']['address'] + "</li><li><b>" +\
-                "Average budget for two people: " + restaurant['restaurant']['average_cost_for_two'] +\
-                "</b></li><li><b>Zomato user rating :</b>" +restaurant['restaurant']['user_rating']['aggregate_rating'] + "</li></ul> </br>"
+                "Average budget for two people: " + str(restaurant['restaurant']['average_cost_for_two'])+\
+                "</b></li><li><b>Zomato user rating :</b>" +str(restaurant['restaurant']['user_rating']['aggregate_rating']) + "</li></ul> </br>"
 
             sender_email = "chatbotatyourhelp@gmail.com"
             receiver_email = tracker.get_slot('user_email_id')
-            # receiver_email = "rushabhpsancheti@gmail.com"
-            password = "chatbot123"
-            dispatcher.utter_message("--receiver_email---" + receiver_email)
-            message = MIMEMultipart("alternative")
-            message["Subject"] = "multipart test"
-            message["From"] = sender_email
-            message["To"] = receiver_email
-            # response = "<h1>Hello</h1>"
-            # Create the plain-text and HTML version of your message
-            text = """\
-                        Hi,
-                        Hope you are doing well"""
-            html = """\
-                        <html>
-                          <body>
-                            <>You can choose one of the option for your restuarant<>
-                               """ + response + """
-                            </p>
-                          </body>
-                        </html>
-                        """
-
-            # Turn these into plain/html MIMEText objects
-            part1 = MIMEText(text, "plain")
-            part2 = MIMEText(html, "html")
-
-            # Add HTML/plain-text parts to MIMEMultipart message
-            # The email client will try to render the last part first
-            message.attach(part1)
-            message.attach(part2)
-
-            # Create secure connection with server and send email
-            context = ssl.create_default_context()
-            try:
-                with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-                    server.login(sender_email, password)
-                    server.sendmail(
-                        sender_email, receiver_email, message.as_string()
-                    )
-                dispatcher.utter_message("Mail Sent Successfully")
-            except smtplib.SMTPException as e:
+            regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+            if not (re.search(regex, receiver_email)):
                 dispatcher.utter_message("You have provided incorrect email ID")
+            else:
+                password = "chatbot123"
+                dispatcher.utter_message("--receiver_email---" + receiver_email)
+                message = MIMEMultipart("alternative")
+                message["Subject"] = "multipart test"
+                message["From"] = sender_email
+                message["To"] = receiver_email
+                text = """\
+                            Hi,
+                            Hope you are doing well"""
+                html = """\
+                            <html>
+                              <body>
+                                <>You can choose one of the option for your restuarant<>
+                                   """ + response + """
+                                </p>
+                              </body>
+                            </html>
+                            """
+
+                # Turn these into plain/html MIMEText objects
+                part1 = MIMEText(text, "plain")
+                part2 = MIMEText(html, "html")
+
+                message.attach(part1)
+                message.attach(part2)
+
+                # Create secure connection with server and send email
+                context = ssl.create_default_context()
+                try:
+                    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+                        server.login(sender_email, password)
+                        server.sendmail(
+                            sender_email, receiver_email, message.as_string()
+                        )
+                    dispatcher.utter_message("Mail Sent Successfully")
+                except smtplib.SMTPException as e:
+                    dispatcher.utter_message("You have provided incorrect email ID")
 
         # dispatcher.utter_message("-----" + response)
         # return [SlotSet('location', loc)]
