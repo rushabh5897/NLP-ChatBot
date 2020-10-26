@@ -16,6 +16,20 @@ nlu:
     - thanks
     - sure
     - sounds great
+
+- intent: negation
+  examples: |
+    - no
+    - nope
+    - naah
+    - not required
+    - no, that's right
+    - no, that's alright
+    - never
+    - no, thank you
+    - no, thanks
+    - nako
+
 - intent: goodbye
   examples: |
     - bye
@@ -34,6 +48,7 @@ nlu:
     - hey there
     - hello
     - hi
+    - hii
     - good morning
     - good evening
     - dear sir
