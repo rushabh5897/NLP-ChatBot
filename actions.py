@@ -25,12 +25,17 @@ class ActionSearchRestaurants(Action):
         cuisine = tracker.get_slot('cuisine')
         location_detail = zomato.get_location(loc, 1)
         d1 = json.loads(location_detail)
+        if d1["location_suggestions"] is None :
+            dispatcher.utter_message(
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+            return [SlotSet('flag_response', False)]
         lat = d1["location_suggestions"][0]["latitude"]
         lon = d1["location_suggestions"][0]["longitude"]
         ct = d1["location_suggestions"][0]["city_name"]
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'south indian': 85, 'thai': 95, 'mexican': 73}
         dispatcher.utter_message("--ct--" + ct)
+
         if not ct:
             dispatcher.utter_message(
                 "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
@@ -84,6 +89,7 @@ class ActionSearchRestaurants(Action):
         else:
             return False
 
+
 class ActionSendMail(Action):
     def name(self):
         return 'action_send_mail'
@@ -95,6 +101,10 @@ class ActionSendMail(Action):
         cuisine = tracker.get_slot('cuisine')
         location_detail = zomato.get_location(loc, 1)
         d1 = json.loads(location_detail)
+        if d1["location_suggestions"] is None :
+            dispatcher.utter_message(
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+            return [SlotSet('flag_response', False)]
         lat = d1["location_suggestions"][0]["latitude"]
         lon = d1["location_suggestions"][0]["longitude"]
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
