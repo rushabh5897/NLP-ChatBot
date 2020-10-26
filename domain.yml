@@ -2,10 +2,11 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- restaurant_search
-- greet
 - affirm
+- restaurant_search
 - goodbye
+- send_mail
+- greet
 - stop
 entities:
 - cuisine
