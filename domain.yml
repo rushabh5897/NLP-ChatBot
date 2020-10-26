@@ -1,18 +1,19 @@
+version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- stop
-- restaurant_search
-- affirm
-- greet
-- goodbye
+  - stop
+  - restaurant_search
+  - affirm
+  - greet
+  - goodbye
 entities:
-- cuisine
-- location
-- people
-- price
-- user_email_id
+  - cuisine
+  - location
+  - people
+  - price
+  - user_email_id
 slots:
   cuisine:
     type: text
@@ -26,15 +27,20 @@ slots:
   price:
     type: text
     influence_conversation: true
+  user_email_id:
+    type: text
+    influence_conversation: true
+
 responses:
   utter_ask_price_range:
   - buttons:
-      - payload: low
-        title: less than 300
-      - payload: mid
-        title: 300 to 700
-      - payload: high
-        title: above 700
+    - payload: low
+      title: less than 300
+    - payload: mid
+      title: 300 to 700
+    - payload: high
+      title: above 700
+    text: Please select price range.
   utter_ask_cuisine:
   - buttons:
     - payload: Chinese
@@ -49,33 +55,32 @@ responses:
       title: North Indian
     text: what kind of cuisine would you like?
   utter_ask_howcanhelp:
-  - text: how can I help you?
+    - text: how can I help you?
   utter_ask_location:
-  - text: In what location?
+    - text: In what location?
   utter_default:
-  - text: i cannot understand
+    - text: i cannot understand
   utter_goodbye:
-  - text: goodbye :(
-  - text: Bye-bye
+    - text: goodbye :(
+    - text: Bye-bye
   utter_greet:
-  - text: hey there! How may i help you
-  - text: Hi, How can I help you!
-  - text: Hey, How is it going. How May I help you Today
+    - text: hey there! How may i help you
+    - text: Hi, How can I help you!
+    - text: Hey, How is it going. How May I help you Today
   utter_ask_mail_required:
     - text: Do you want to me to send information via mail?
   utter_ask_mail:
     - text: Can you type your email ID?
 
 actions:
-- action_search_restaurants
-- action_send_mail
-- utter_ask_cuisine
-- utter_ask_howcanhelp
-- utter_ask_location
-- utter_ask_mail
-- utter_ask_mail_required
-- utter_default
-- utter_goodbye
-- utter_greet
-- utter_ask_price_range
-version: '2.0'
+  - action_search_restaurants
+  - action_send_mail
+  - utter_ask_cuisine
+  - utter_ask_howcanhelp
+  - utter_ask_location
+  - utter_ask_mail
+  - utter_ask_mail_required
+  - utter_default
+  - utter_goodbye
+  - utter_greet
+  - utter_ask_price_range

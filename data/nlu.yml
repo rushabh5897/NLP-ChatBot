@@ -57,6 +57,7 @@ nlu:
     - [South Indian]{"entity": "cuisine", "value": "South Indian"}
     - [south-indian]{"entity": "cuisine", "value": "South Indian"}
     - [North Indian](cuisine)
+    - [South Indian](cuisine)
     - [Italian](cuisine)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
     - [chinese](cuisine)
@@ -209,7 +210,10 @@ nlu:
 - intent: stop
   examples: |
     - \b
-    - \c
+    - bye
+    - happy weekend
+    - have a good day
+    - good day
     - quit
     - exit
 - synonym: chinese
@@ -242,7 +246,7 @@ nlu:
   examples: |
     - south Indian
     - southindian
-    - south india
+    - south indian
     - southendian
 - synonym: North Indian
   examples: |
@@ -277,6 +281,7 @@ nlu:
 - synonym: mid
   examples: |
     - moderate
+
 - regex: greet
   examples: |
     - hey[^\s]*
