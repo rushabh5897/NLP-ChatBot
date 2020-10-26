@@ -3,16 +3,16 @@ from __future__ import division
 from __future__ import unicode_literals
 
 import json
+import smtplib
+import ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 
 import zomatopy
 
-import smtplib
-import ssl
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 
 class ActionSearchRestaurants(Action):
     def name(self):
@@ -30,11 +30,16 @@ class ActionSearchRestaurants(Action):
         ct = d1["location_suggestions"][0]["city_name"]
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'south indian': 85, 'thai': 95, 'mexican': 73}
-        #dispatcher.utter_message("--ct--" + ct)
-        ct=ct.lower()
+        dispatcher.utter_message("--ct--" + ct)
+        ct = ct.lower()
+        if not ct:
+            dispatcher.utter_message(
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+            return [SlotSet('flag_response', False)]
         if not self.checkCityAvailable(ct):
-            response="We do not opearate in this city yet"
-            dispatcher.utter_message("--------------------**--------------------\n" + response + "--------------------**--------------------\n")
+            response = "We do not opearate in this city yet"
+            dispatcher.utter_message(
+                "--------------------**--------------------\n" + response + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]
         else:
             results = zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 5)
@@ -42,7 +47,8 @@ class ActionSearchRestaurants(Action):
             response = ""
             if d['results_found'] == 0:
                 response = "Extremely Sorry !!! I'm not able to find any related results to your query \n"
-                dispatcher.utter_message("--------------------**--------------------\n" + response + "--------------------**--------------------\n")
+                dispatcher.utter_message(
+                    "--------------------**--------------------\n" + response + "--------------------**--------------------\n")
                 return [SlotSet('flag_response', False)]
             else:
                 for restaurant in d['restaurants']:
@@ -50,11 +56,27 @@ class ActionSearchRestaurants(Action):
                                restaurant['restaurant']['location']['address'] + " has been rated " + \
                                restaurant['restaurant']['user_rating']['aggregate_rating'] + "\n"
 
-                dispatcher.utter_message("--------------------**--------------------\n" + response + "--------------------**--------------------\n")
+                dispatcher.utter_message(
+                    "--------------------**--------------------\n" + response + "--------------------**--------------------\n")
                 return [SlotSet('flag_response', True)]
 
     def checkCityAvailable(self, ct):
-        tier1_tier2_city_list=["ahmedabad", "bengaluru", "chennai", "delhi ncr", "hyderabad", "kolkata", "mumbai", "pune", "agra", "ajmer",  "aligarh", "amravati", "amritsar", "asansol", "aurangabad", "bareilly", "belgaum", "bhavnagar", "bhiwandi",  "bhopal", "bhubaneswar", "bikaner", "bilaspur", "bokaro steel city", "chandigarh", "coimbatore", "cuttack",  "dehradun", "dhanbad", "bhilai", "durgapur", "dindigul", "erode", "faridabad", "firozabad", "ghaziabad",  "gorakhpur", "gulbarga", "guntur", "gwalior", "gurgaon", "guwahati", "hamirpur", "hubli–dharwad", "indore",  "jabalpur", "jaipur", "jalandhar", "jammu", "jamnagar", "jamshedpur", "jhansi", "jodhpur", "kakinada",  "kannur", "kanpur", "karnal", "kochi", "kolhapur", "kollam", "kozhikode", "kurnool", "ludhiana", "lucknow",  "madurai", "malappuram", "mathura", "mangalore", "meerut", "moradabad", "mysore", "nagpur", "nanded", "nashik",  "nellore", "noida", "patna", "pondicherry", "purulia", "prayagraj", "raipur", "rajkot", "rajahmundry",  "ranchi", "rourkela", "salem", "sangli", "shimla", "siliguri", "solapur", "srinagar", "surat", "thanjavur",  "thiruvananthapuram", "thrissur", "tiruchirappalli", "tirunelveli", "ujjain", "bijapur", "vadodara",  "varanasi", "vasai-virar city", "vijayawada", "visakhapatnam", "vellore", "warangal"]
+        tier1_tier2_city_list = ["ahmedabad", "bengaluru", "chennai", "delhi ncr", "hyderabad", "kolkata", "mumbai",
+                                 "pune", "agra", "ajmer", "aligarh", "amravati", "amritsar", "asansol", "aurangabad",
+                                 "bareilly", "belgaum", "bhavnagar", "bhiwandi", "bhopal", "bhubaneswar", "bikaner",
+                                 "bilaspur", "bokaro steel city", "chandigarh", "coimbatore", "cuttack", "dehradun",
+                                 "dhanbad", "bhilai", "durgapur", "dindigul", "erode", "faridabad", "firozabad",
+                                 "ghaziabad", "gorakhpur", "gulbarga", "guntur", "gwalior", "gurgaon", "guwahati",
+                                 "hamirpur", "hubli–dharwad", "indore", "jabalpur", "jaipur", "jalandhar", "jammu",
+                                 "jamnagar", "jamshedpur", "jhansi", "jodhpur", "kakinada", "kannur", "kanpur",
+                                 "karnal", "kochi", "kolhapur", "kollam", "kozhikode", "kurnool", "ludhiana", "lucknow",
+                                 "madurai", "malappuram", "mathura", "mangalore", "meerut", "moradabad", "mysore",
+                                 "nagpur", "nanded", "nashik", "nellore", "noida", "patna", "pondicherry", "purulia",
+                                 "prayagraj", "raipur", "rajkot", "rajahmundry", "ranchi", "rourkela", "salem",
+                                 "sangli", "shimla", "siliguri", "solapur", "srinagar", "surat", "thanjavur",
+                                 "thiruvananthapuram", "thrissur", "tiruchirappalli", "tirunelveli", "ujjain",
+                                 "bijapur", "vadodara", "varanasi", "vasai-virar city", "vijayawada", "visakhapatnam",
+                                 "vellore", "warangal"]
 
         if ct in tier1_tier2_city_list:
             return True
@@ -80,15 +102,21 @@ class ActionSendMail(Action):
         results = zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 10)
         d = json.loads(results)
         response = ""
+        if not lat:
+            dispatcher.utter_message(
+                "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
+            return [SlotSet('flag_response', False)]
         if d['results_found'] == 0:
             response = "Extremely Sorry !!! I'm not able to find any related results to your query \n"
-            dispatcher.utter_message( "--------------------**--------------------\n" + response + "--------------------**--------------------\n")
+            dispatcher.utter_message(
+                "--------------------**--------------------\n" + response + "--------------------**--------------------\n")
 
         else:
             for restaurant in d['restaurants']:
-                response = response + "Found " + restaurant['restaurant']['name'] + " in " + \
-                           restaurant['restaurant']['location']['address'] + " has been rated " + \
-                           restaurant['restaurant']['user_rating']['aggregate_rating'] + restaurant['restaurant']['average_cost_for_two'] +"\n"
+                response = response + "<h2>" + restaurant['restaurant']['name'] + "</h2><ul><li><b>" + \
+                "Restaurant locality address : </b>" + restaurant['restaurant']['location']['address'] + "</li><li><b>" +\
+                "Average budget for two people: " + restaurant['restaurant']['average_cost_for_two'] +\
+                "</b></li><li><b>Zomato user rating :</b>" +restaurant['restaurant']['user_rating']['aggregate_rating'] + "</li></ul> </br>"
 
             sender_email = "chatbotatyourhelp@gmail.com"
             receiver_email = tracker.get_slot('user_email_id')
@@ -107,7 +135,7 @@ class ActionSendMail(Action):
             html = """\
                         <html>
                           <body>
-                            <p>Hi,<br>
+                            <>You can choose one of the option for your restuarant<>
                                """ + response + """
                             </p>
                           </body>
@@ -135,5 +163,5 @@ class ActionSendMail(Action):
             except smtplib.SMTPException as e:
                 dispatcher.utter_message("You have provided incorrect email ID")
 
-        #dispatcher.utter_message("-----" + response)
-        #return [SlotSet('location', loc)]
+        # dispatcher.utter_message("-----" + response)
+        # return [SlotSet('location', loc)]
