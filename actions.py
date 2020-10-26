@@ -19,7 +19,7 @@ class ActionSearchRestaurants(Action):
         return 'action_search_restaurants'
 
     def run(self, dispatcher, tracker, domain):
-        config = {"user_key": "f4924dc9ad672ee8c4f8c84743301af5"}
+        config = {"user_key": "e1def62de91816d1dce4cda2c2b39ca5"}
         zomato = zomatopy.initialize_app(config)
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')
@@ -31,11 +31,12 @@ class ActionSearchRestaurants(Action):
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'south indian': 85, 'thai': 95, 'mexican': 73}
         dispatcher.utter_message("--ct--" + ct)
-        ct = ct.lower()
         if not ct:
             dispatcher.utter_message(
                 "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]
+        else:
+            ct = ct.lower()
         if not self.checkCityAvailable(ct):
             response = "We do not opearate in this city yet"
             dispatcher.utter_message(
@@ -83,13 +84,12 @@ class ActionSearchRestaurants(Action):
         else:
             return False
 
-
 class ActionSendMail(Action):
     def name(self):
         return 'action_send_mail'
 
     def run(self, dispatcher, tracker, domain):
-        config = {"user_key": "f4924dc9ad672ee8c4f8c84743301af5"}
+        config = {"user_key": "e1def62de91816d1dce4cda2c2b39ca5"}
         zomato = zomatopy.initialize_app(config)
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')
