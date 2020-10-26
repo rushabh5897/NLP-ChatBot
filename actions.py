@@ -33,7 +33,7 @@ class ActionSearchRestaurants(Action):
             dispatcher.utter_message(
                 "--------------------**--------------------\n" + "I am not able understand your location, Please try again" + "--------------------**--------------------\n")
             return [SlotSet('flag_response', False)]
-        
+
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'south indian': 85, 'thai': 95, 'mexican': 73}
         dispatcher.utter_message("--ct--" + ct)
