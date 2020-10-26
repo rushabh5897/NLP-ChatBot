@@ -206,8 +206,7 @@ nlu:
     - [mid](price)
     - find me a [cheap]{"entity": "price", "value": "low"} [chineese](cuisine) restaurant in [vijayawada](location)
     - find me a restaurant in [pune](location)
-    - [Italian](cuisine)
-    - [mid](price)
+    - find me [cheap]{"entity": "price", "value": "low"} [chineese](cuisine) restaurants in [kanpur](location)
 - intent: send_mail
   examples: |
     - My email id is [rushabhpsancheti@gmail.com](user_email_id)
@@ -216,6 +215,7 @@ nlu:
     - Sure, send it to [myselfemailu@hotmail.com](user_email_id)
     - Yes, send to [myemails@upgrad.com](user_email_id)
     - [test345@gmail.com](user_email_id)
+    - [testmyemail@gmail.com](user_email_id)
 - intent: stop
   examples: |
     - \b
