@@ -54,7 +54,8 @@ nlu:
     - I am looking for [asian fusion](cuisine) food
     - I am looking a restaurant in [294328](location)
     - in [Gurgaon](location)
-    - [South Indian](cuisine)
+    - [South Indian]{"entity": "cuisine", "value": "South Indian"}
+    - [south-indian]{"entity": "cuisine", "value": "South Indian"}
     - [North Indian](cuisine)
     - [Italian](cuisine)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
@@ -62,15 +63,20 @@ nlu:
     - [mexican]{"entity": "cuisine", "value": "Mexican"}
     - [italian]{"entity": "cuisine", "value": "Italian"}
     - [american]{"entity": "cuisine", "value": "American"}
-    - [nouth Indian]{"entity": "cuisine", "value": "South Indian"}
+    - [south Indian]{"entity": "cuisine", "value": "South Indian"}
     - [north Indian]{"entity": "cuisine", "value": "North Indian"}
+    - find me [cheap]{"entity": "price", "value": "low"} chinese restaurants in kanpur
     - [Lithuania](location)
     - Oh, sorry, in [Italy](location)
     - in [delhi](location)
+    - table for [4](people)
+    - book a table for [3](people) in [italian](cuisine) restaurant in [pune](location)
     - I am looking for some restaurants in [Mumbai](location)
     - I am looking for [mexican indian fusion](cuisine)
     - can you book a table in [rome](location) in a [moderate]{"entity": "price", "value": "mid"} price range with [british](cuisine) food for [four]{"entity": "people", "value": "4"} people
     - [central](location) [indian](cuisine) restaurant
+    - we are [2](people)
+    - we are a [couple](people)
     - please help me to find restaurants in [pune](location)
     - Please find me a restaurantin [bangalore](location)
     - [mumbai](location)
@@ -80,6 +86,8 @@ nlu:
     - [delhi](location)
     - please find me a restaurant in [ahmedabad](location)
     - please show me a few [italian](cuisine) restaurants in [bangalore](location)
+    - please show [mid](price) range restaurants in [dilli](location)
+    - book a [high](price) end [italian](cuisine) restaurant in [Vijayawada](location)
     - [Ahmedabad](location)
     - [Bengaluru](location)
     - [Chennai](location)
@@ -204,6 +212,7 @@ nlu:
     - delhi
     - dilli
     - capital of India
+    - nayi dilli
 - synonym: Mexican
   examples: |
     - mexican
@@ -235,6 +244,10 @@ nlu:
 - synonym: '4'
   examples: |
     - four
+- synonym: '2'
+  examples: |
+    - couple
+    - two
 - synonym: bangalore
   examples: |
     - Bengaluru

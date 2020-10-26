@@ -19,7 +19,21 @@ slots:
   location:
     type: text
     influence_conversation: true
+  people:
+    type: text
+    influence_conversation: true
+  price:
+    type: text
+    influence_conversation: true
 responses:
+  utter_ask_price_range:
+  - buttons:
+      - payload: low
+        title: less than 300
+      - payload: mid
+        title: 300 to 700
+      - payload: high
+        title: above 700
   utter_ask_cuisine:
   - buttons:
     - payload: Chinese
@@ -55,4 +69,5 @@ actions:
 - utter_default
 - utter_goodbye
 - utter_greet
+- utter_ask_price_range
 version: '2.0'
