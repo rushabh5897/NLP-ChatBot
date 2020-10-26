@@ -19,7 +19,7 @@ class ActionSearchRestaurants(Action):
         return 'action_search_restaurants'
 
     def run(self, dispatcher, tracker, domain):
-        config = {"user_key": "f4924dc9ad672ee8c4f8c84743301af5"}
+        config = {"user_key": "e1def62de91816d1dce4cda2c2b39ca5"}
         zomato = zomatopy.initialize_app(config)
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')
@@ -31,8 +31,9 @@ class ActionSearchRestaurants(Action):
         cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
                          'south indian': 85, 'thai': 95, 'mexican': 73}
         dispatcher.utter_message("--ct--" + ct)
-        if self.checkCityAvailable(ct):
-            response="We do not opearate in this city yet"
+        ct=ct.lower()
+        if not self.checkCityAvailable(ct):
+            response="We do not operate in this city yet"
         else:
             results = zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)), 5)
             d = json.loads(results)
@@ -47,7 +48,7 @@ class ActionSearchRestaurants(Action):
                                restaurant['restaurant']['user_rating']['aggregate_rating'] + "\n"
 
         dispatcher.utter_message("-----" + response)
-        return [SlotSet('location', loc)]
+        #return [SlotSet('location', loc)]
 
     def checkCityAvailable(self, ct):
         tier1_tier2_city_list=["ahmedabad", "bengaluru", "chennai", "delhi ncr", "hyderabad", "kolkata", "mumbai", "pune", "agra", "ajmer",  "aligarh", "amravati", "amritsar", "asansol", "aurangabad", "bareilly", "belgaum", "bhavnagar", "bhiwandi",  "bhopal", "bhubaneswar", "bikaner", "bilaspur", "bokaro steel city", "chandigarh", "coimbatore", "cuttack",  "dehradun", "dhanbad", "bhilai", "durgapur", "dindigul", "erode", "faridabad", "firozabad", "ghaziabad",  "gorakhpur", "gulbarga", "guntur", "gwalior", "gurgaon", "guwahati", "hamirpur", "hubli–dharwad", "indore",  "jabalpur", "jaipur", "jalandhar", "jammu", "jamnagar", "jamshedpur", "jhansi", "jodhpur", "kakinada",  "kannur", "kanpur", "karnal", "kochi", "kolhapur", "kollam", "kozhikode", "kurnool", "ludhiana", "lucknow",  "madurai", "malappuram", "mathura", "mangalore", "meerut", "moradabad", "mysore", "nagpur", "nanded", "nashik",  "nellore", "noida", "patna", "pondicherry", "purulia", "prayagraj", "raipur", "rajkot", "rajahmundry",  "ranchi", "rourkela", "salem", "sangli", "shimla", "siliguri", "solapur", "srinagar", "surat", "thanjavur",  "thiruvananthapuram", "thrissur", "tiruchirappalli", "tirunelveli", "ujjain", "bijapur", "vadodara",  "varanasi", "vasai-virar city", "vijayawada", "visakhapatnam", "vellore", "warangal"]
@@ -63,7 +64,7 @@ class ActionSendMail(Action):
         return 'action_send_mail'
 
     def run(self, dispatcher, tracker, domain):
-        config = {"user_key": "f4924dc9ad672ee8c4f8c84743301af5"}
+        config = {"user_key": "e1def62de91816d1dce4cda2c2b39ca5"}
         zomato = zomatopy.initialize_app(config)
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')

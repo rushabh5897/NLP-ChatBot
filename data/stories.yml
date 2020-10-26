@@ -71,7 +71,7 @@ stories:
   - action: utter_ask_mail
   - slot_was_set:
     - user_email_id: test@gmail.com
-  - intent: action_send_mail
+  - intent: send_mail
     entities:
     - user_email_id: est@gmail.com
   - action: action_send_mail
@@ -141,3 +141,31 @@ stories:
   - action: action_send_mail
   - intent: goodbye
   - action: utter_goodbye
+
+- story: interactive_story_99
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - cuisine: Italian
+    - location: kurdu
+  - slot_was_set:
+    - cuisine: Italian
+  - slot_was_set:
+    - location: kurdu
+  - action: utter_ask_price_range
+  - intent: restaurant_search
+    entities:
+    - price: low
+  - slot_was_set:
+    - price: low
+  - action: action_search_restaurants
+  - action: utter_ask_mail_required
+  - intent: affirm
+  - intent: send_mail
+    entities:
+    - user_email_id: bujji.phanikiran@gmail.com
+  - slot_was_set:
+    - user_email_id: bujji.phanikiran@gmail.com
+  - action: action_send_mail
