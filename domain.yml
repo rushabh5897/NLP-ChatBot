@@ -2,11 +2,11 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet
 - send_mail
+- restaurant_search
+- greet
 - affirm
 - goodbye
-- restaurant_search
 - stop
 entities:
 - cuisine
@@ -14,7 +14,10 @@ entities:
 - people
 - price
 - user_email_id
+- flag_response
 slots:
+  flag_response:
+    type: bool
   cuisine:
     type: text
     influence_conversation: true
@@ -58,7 +61,7 @@ responses:
   utter_ask_location:
   - text: In what location?
   utter_default:
-  - text: i cannot understand
+  - text: i cannot understand, can you please repeat
   utter_goodbye:
   - text: goodbye :(
   - text: Bye-bye

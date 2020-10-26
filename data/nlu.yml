@@ -16,7 +16,6 @@ nlu:
     - thanks
     - sure
     - sounds great
-
 - intent: negation
   examples: |
     - no
@@ -29,7 +28,6 @@ nlu:
     - no, thank you
     - no, thanks
     - nako
-
 - intent: goodbye
   examples: |
     - bye
@@ -222,6 +220,8 @@ nlu:
     - find me a [cheap]{"entity": "price", "value": "low"} [chineese](cuisine) restaurant in [vijayawada](location)
     - find me a restaurant in [pune](location)
     - find me [cheap]{"entity": "price", "value": "low"} [chineese](cuisine) restaurants in [kanpur](location)
+    - send me list of [high class]{"entity": "price", "value": "high"} [chinese](cuisine) hotels in [pune](location)
+    - send me list of [mexican](cuisine) hotels in [pune](location)
 - intent: send_mail
   examples: |
     - My email id is [rushabhpsancheti@gmail.com](user_email_id)
@@ -231,6 +231,8 @@ nlu:
     - Yes, send to [myemails@upgrad.com](user_email_id)
     - [test345@gmail.com](user_email_id)
     - [testmyemail@gmail.com](user_email_id)
+    - [abc@gmail.com](user_email_id)
+    - [adfja@viit.ac.in](user_email_id)
 - intent: stop
   examples: |
     - \b
