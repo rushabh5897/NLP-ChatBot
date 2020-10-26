@@ -1,211 +1,77 @@
 version: "2.0"
 stories:
-- story: complete path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: delhi
-  - slot_was_set:
-    - location: delhi
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: chinese
-  - slot_was_set:
-    - cuisine: chinese
-  - action: action_search_restaurants
-  - slot_was_set:
-    - location: delhi
-  - action: utter_goodbye
-- story: location specified
+- story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
   - intent: restaurant_search
     entities:
-    - location: delhi
+    - price: low
+    - cuisine: south indian
+    - location: pune
   - slot_was_set:
-    - location: delhi
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: chinese
+    - cuisine: south indian
   - slot_was_set:
-    - cuisine: chinese
+    - location: pune
+  - slot_was_set:
+    - price: low
   - action: action_search_restaurants
+  - slot_was_set:
+    - location: pune
+  - action: action_search_restaurants
+  - action: utter_ask_mail_required
   - intent: affirm
-  - action: utter_goodbye
-- story: complete path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: delhi
-  - slot_was_set:
-    - location: delhi
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: North Indian
-  - slot_was_set:
-    - cuisine: North Indian
-  - action: action_search_restaurants
-  - action: utter_goodbye
-- story: complete path 3
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: italy
-  - slot_was_set:
-    - location: italy
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: chinese
-  - slot_was_set:
-    - cuisine: chinese
-  - action: action_search_restaurants
   - intent: goodbye
   - action: utter_goodbye
-- story: complete path 4
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: delhi
-  - slot_was_set:
-    - location: delhi
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: chinese
-  - slot_was_set:
-    - cuisine: chinese
-  - action: action_search_restaurants
-  - slot_was_set:
-    - location: delhi
-- story: interactive_story_1
+
+- story: interactive_story_2
   steps:
   - intent: greet
   - action: utter_greet
   - intent: restaurant_search
     entities:
-    - location: mumbai
+    - cuisine: south indian
+    - location: pune
   - slot_was_set:
-    - location: mumbai
-  - action: utter_ask_cuisine
+    - cuisine: south indian
+  - slot_was_set:
+    - location: pune
+  - action: utter_ask_price_range
   - intent: restaurant_search
     entities:
-    - cuisine: chinese
+    - price: mid
   - slot_was_set:
-    - cuisine: chinese
+    - price: mid
   - action: action_search_restaurants
   - slot_was_set:
-    - location: mumbai
-  - intent: stop
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: mumbai
-  - slot_was_set:
-    - location: mumbai
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: Italian
-  - slot_was_set:
-    - cuisine: Italian
-  - action: action_search_restaurants
-  - slot_was_set:
-    - location: mumbai
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-    entities:
-    - cuisine: chinese
-    - location: delhi
-  - slot_was_set:
-    - cuisine: chinese
-  - slot_was_set:
-    - location: delhi
-  - action: action_search_restaurants
-  - slot_was_set:
-    - location: delhi
+    - location: pune
+  - action: utter_ask_mail_required
   - intent: affirm
-  - action: utter_goodbye
-- story: happy_path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-    entities:
-    - cuisine: italian
-    - location: mumbai
-  - slot_was_set:
-    - cuisine: italian
-  - slot_was_set:
-    - location: mumbai
-  - action: action_search_restaurants
-  - slot_was_set:
-    - location: mumbai
-  - intent: affirm
-  - action: utter_goodbye
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-    entities:
-    - cuisine: chinese
-  - slot_was_set:
-    - cuisine: chinese
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: delhi
-  - slot_was_set:
-    - location: delhi
-  - action: action_search_restaurants
-  - slot_was_set:
-    - location: delhi
-  - intent: affirm
+  - intent: goodbye
   - action: utter_goodbye
 
-- story: interactive_story_1
+- story: interactive_story_3
   steps:
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: stop
-  - intent: restaurant_search
-    entities:
-    - location: Pune
-  - slot_was_set:
-    - location: Pune
-  - action: utter_ask_cuisine
+  - intent: greet
+  - action: utter_greet
   - intent: restaurant_search
     entities:
-    - cuisine: chinese
+    - price: low
+    - cuisine: chineese
+    - location: vijayawada
   - slot_was_set:
-    - cuisine: chinese
+    - cuisine: chineese
+  - slot_was_set:
+    - location: vijayawada
+  - slot_was_set:
+    - price: low
   - action: action_search_restaurants
+  - action: utter_ask_mail_required
+  - intent: affirm
+  - action: utter_ask_mail
+  - slot_was_set:
+    - user_email_id: test@gmail.com
+  - intent: action_send_mail
+    entities:
+    - user_email_id: est@gmail.com
+  - action: action_send_mail
